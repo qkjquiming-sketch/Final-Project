@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+struct ParkingLog {
+    string licensePlate;    // Vehicle's license plate
+    string entryTime;       // Entry time of the vehicle
+    string exitTime;        // Exit time of the vehicle
+    float fee;              // Parking fee
+};
+
+void clearScreen();                                                                            // Declares the function to clear the console screen
+void pauseProgram();                                                                           // Declares the function to pause the program                                         
+void printMenu(int totalSpaces, int occupiedSpaces);                                           // Declares the function to print the menu                                                                          // Declares the function to clear the console screen
+void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount);     // Declares the function for vehicle entry
+void vehicleExit(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount);      // Declares the function for vehicle exit
+
+int main() {
+    int totalSpaces = 100;          // Total parking spaces
+    int occupiedSpaces = 0;         // Currently occupied spaces
+    ParkingLog logs[100];           // Array to store parking logs
+    int logCount = 0;               // Count of parking logs
+    int choice = 0;                 // User menu choice
+    // Parking rates
+    float ratePerHour = 20.0;       // Rate per hour
+    float overtimeRate = 30.0;      // Overtime parking rate
+    float overnightRate = 200.0;    // Overnight parking rate
+
+    while (choice != 4) {            // Loop until user chooses to exit
+        clearScreen();                              // Clear console screen
+        printMenu(totalSpaces, occupiedSpaces);     // Reprint the menu
+        cin >> choice;                              // User input for menu choice
+        cin.ignore(10, '\n');                       // Clear input buffer
+    
+            switch (choice) {
+                case 1:
+                    vehicleEntry(logs, occupiedSpaces, totalSpaces, logCount);   // Call vehicle entry function
+                    pauseProgram();
+                    break;
+                case 2:
+                    vehicleExit(logs, occupiedSpaces, totalSpaces, logCount);    // Call vehicle exit function
+                    pauseProgram();
+                    break;
+
+                    break;
+                default:
+                    cout << "Invalid choice. Please try again.\n";
+                    pauseProgram();
+                    break;
+            }
+    }
+
+    return 0;
+}
+
+void clearScreen() {        // Function to clear the console screen
+        system("cls");
+
+}
+
+void pauseProgram() {       // Function to clear the console screen
+    cout << "\nPress Enter to continue...";
+    cin.ignore();
+    cin.get();
+}
+
+void printMenu(int totalSpaces, int occupiedSpaces) {       // Function to print the menu options
+    cout
+        << "===============================\n"
+        << "\t   <Project Title>\n"
+        << "===============================\n";
+    cout << "Available Spaces: " << (totalSpaces) - (occupiedSpaces) << "/" <<  totalSpaces << "\n"
+        << "-------------------------------\n"
+        << "1. Vehicle Entry\n"
+        << "2. Vehicle Exit\n"
+        << "3. View Parking Logs & Invoices\n"
+        << "4. Exit\n"
+        << "-------------------------------\n"
+        << "Enter your choice: ";
+    }
+
+void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount) {     // Function to handle vehicle entry
+    if (occupiedSpaces < totalSpaces) {
+        cout << "\nEnter License Plate: ";
+        getline(cin, logs[logCount].licensePlate);
+        cout << "Enter Entry Time (HH:MM): ";
+        cin >> logs[logCount].entryTime;
+        logs[logCount].fee = 0;
+        occupiedSpaces++;
+        logCount++;
+        cout << "Vehicle entered successfully.\n";
+        cout << "Slots remaining: " << (totalSpaces - occupiedSpaces) << "\n";
+    } else {
+        cout << "ERROR! Parking Full. No available spaces.\n";
+    }
+}
+
+void vehicleExit(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount) {      // Function to handle vehicle exit
+    
+}
