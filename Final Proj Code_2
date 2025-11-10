@@ -78,11 +78,6 @@ void printMenu(int totalSpaces, int occupiedSpaces) {       // Function to print
         << "-------------------------------\n"
         << "Enter your choice: ";
     }
-float parkingfee(float duration, float ratePerHour, float overtimeRate, float overnightRate, float lostcardfee) {
-    float fee = (duration <= 3) ? ratePerHour * duration : (3 * ratePerHour + (duration - 3) * overtimeRate);
-    fee += overnightRate + lostcardfee;
-    return fee;
-}
 
 void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount) {     // Function to handle vehicle entry
     if (occupiedSpaces < totalSpaces) {
@@ -98,6 +93,12 @@ void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &
     } else {
         cout << "ERROR! Parking Full. No available spaces.\n";
     }
+}
+
+float parkingfee(float duration, float ratePerHour, float overtimeRate, float overnightRate, float lostcardfee) {
+    float fee = (duration <= 3) ? ratePerHour * duration : (3 * ratePerHour + (duration - 3) * overtimeRate);
+    fee += overnightRate + lostcardfee;
+    return fee;
 }
 
 void vehicleExit(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount) {      // Function to handle vehicle exit
