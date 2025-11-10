@@ -42,7 +42,7 @@ int main() {
         if (cin.fail()) {                              // If input is not a number
             cin.clear();                               // Clear the error flag
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear invalid input
-            cout << "\nInvalid input! Please enter a number (1-5).\n";
+            cout << "\nInvalid input! Please enter a number (1-4).\n";
             pauseProgram();                            // Pause before re-showing menu
             continue;                                  // Skip to next loop iteration
         }
@@ -64,10 +64,6 @@ int main() {
                     saveLogsToFile(logs, logCount);                              // Call save logs to file function
                     cout << "Exiting the program. Goodbye!\n";                   // Save logs before exiting
                     return 0;
-                case 5: // Save Logs to File
-                    saveLogsToFile(logs, logCount);                             // Call save logs to file function
-                    pauseProgram();
-                    break;
                 default:
                     cout << "Invalid choice. Please try again.\n";
                     pauseProgram();
@@ -285,4 +281,5 @@ void saveLogsToFile(ParkingLog logs[], int logCount) {
 
     file.close();
     cout << "\nParking logs saved successfully to 'ParkingLogs.txt'.\n";
+
 }
