@@ -15,7 +15,7 @@ struct ParkingLog {
 
 void clearScreen();                                                                            // Declares the function to clear the console screen
 void pauseProgram();                                                                           // Declares the function to pause the program                                         
-void printMenu(int totalSpaces, int occupiedSpaces);                                           // Declares the function to print the menu                                                                          // Declares the function to clear the console screen
+void printMenu(int totalSpaces, int occupiedSpaces);                                           // Declares the function to print the menu                                                                         
 void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount);     // Declares the function for vehicle entry
 void vehicleExit(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount);      // Declares the function for vehicle exit
 void viewLogs(ParkingLog logs[], int logCount);                                                // Declares the function to view parking logs
@@ -283,3 +283,4 @@ void saveLogsToFile(ParkingLog logs[], int logCount) {
     cout << "\nParking logs saved successfully to 'ParkingLogs.txt'.\n";
 
 }
+
