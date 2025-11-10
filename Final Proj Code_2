@@ -78,6 +78,11 @@ void printMenu(int totalSpaces, int occupiedSpaces) {       // Function to print
         << "-------------------------------\n"
         << "Enter your choice: ";
     }
+float parkingfee(float duration, float ratePerHour, float overtimeRate, float overnightRate, float lostcardfee) {
+    float fee = (duration <= 3) ? ratePerHour * duration : (3 * ratePerHour + (duration - 3) * overtimeRate);
+    fee += overnightRate + lostcardfee;
+    return fee;
+}
 
 void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount) {     // Function to handle vehicle entry
     if (occupiedSpaces < totalSpaces) {
@@ -95,20 +100,14 @@ void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &
     }
 }
 
-float parkingfee(float duration, float ratePerHour, float overtimeRate, float overnightRate, float lostcardfee) {
-    float fee = (duration <= 3) ? ratePerHour * duration : (3 * ratePerHour + (duration - 3) * overtimeRate);
-    fee += overnightRate + lostcardfee;
-    return fee;
-}
-
 void vehicleExit(ParkingLog logs[], int &occupiedSpaces, int totalSpaces, int &logCount) {      // Function to handle vehicle exit
     char card, overnight;           // Card and if overnight
     float duration = 0;             // PLaceholder dipatapos
     // Parking rates
     float ratePerHour = 20.0;       // Rate per hour
     float overtimeRate = 30.0;      // Overtime parking rate
-    float overnightRate = 200.0;    // Overnight parking rate
-    float lostcardfee = 200.0;      // Lost Card compensation fee
+    float overnightRate = 0;    // Overnight parking rate
+    float lostcardfee = 0;      // Lost Card compensation fee
     
 cout << "\nEnter License Plate: ";
         getline(cin, logs[logCount].licensePlate);
@@ -132,6 +131,7 @@ cout << "\nEnter License Plate: ";
     occupiedSpaces--;
     cout << "Vehicle has exited successfully.\n";
     cout << "Slots remaining: " << (totalSpaces - occupiedSpaces) << "\n";
+        
         
     
 }
