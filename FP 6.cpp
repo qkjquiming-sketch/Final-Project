@@ -43,7 +43,7 @@ void clearScreen();                                                             
 void pauseProgram();                                                                           // Declares the function to pause the program     
 void printCentered(ostream &out, string text, int width = 45);                                 // Declares the function to print centered text    
 // MAIN FUNCTION DECLARATIONS
-void printMenu(int TOTAL_SPACES, int occupiedSpaces);                                          // Declares the function to print the menu                                                                          // Declares the function to clear the console screen
+void printMenu(int TOTAL_SPACES, int occupiedSpaces);                                          // Declares the function to print the menu                                                                         
 void vehicleEntry(ParkingLog logs[], int &occupiedSpaces, int TOTAL_SPACES, int &logCount);    // Declares the function for vehicle entry
 void vehicleExit(ParkingLog logs[], int &occupiedSpaces, int TOTAL_SPACES, int &logCount);     // Declares the function for vehicle exit
 void viewLogs(ParkingLog logs[], int logCount);                                                // Declares the function to view parking logs
